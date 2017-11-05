@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <link th:href="@{/style.css}" rel="stylesheet" type="text/css"/>
+    <title>Schronisko</title>
+    <script>
+        function disButton() {
+            document.getElementById("button").disabled = false;
+        }
+    </script>
+
+</head>
+<body onload="disButton()">
+<form th:action="@{/addanimal}" method="post" th:object="${animal}">
+    Imię zwierzaka: <input type="text" id="input1" onload="eneButton()" th:field="*{name}"/><br/>
+    Opis :<textarea id="input2" rows="5" cols="40" onload="eneButton()" th:field="*{description}"></textarea><br/>
+    Kot<input type="radio" value="kot" id="male" th:field="*{species}"/>
+    Pies<input type="radio" value="pies" id="male" th:field="*{species}"/>
+    Papuga<input type="radio" value="papuga" id="male" th:field="*{species}"/>
+    Chomik<input type="radio" id="male" value="chomik" th:field="*{species}"/>
+    <input type="submit" id="button" value="Dodaj zwierzę" th:disabled="${disabled}"/><br/>
+
+</form>
+</body>
+</html>

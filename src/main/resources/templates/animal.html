@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Szczegóły zwierzaka</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/style.css}" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<div><img src="" th:src="@{'/images/'+${idNumber}}+'.jpg'"/></div>
+<div th:text="${name}"></div>
+<div th:text="${description}"></div>
+<div th:text="${species}"></div><br/><br/>
+<form th:action="@{/showanimal}" method="get">
+    <button type="submit" value="Powrót">Powrót</button>
+</form>
+</body>
+</html>

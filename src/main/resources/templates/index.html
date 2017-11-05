@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Przykład Tymeleaf</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/style.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Zdjęcie</th>
+        <th>Numer</th>
+        <th>Opis</th>
+        <th>Gatunek</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="animal:${animalList}">
+        <td><a th:href="@{'animal?idNumber='+${animal.idNumber}}" th:text="${animal.name}"></a></td>
+        <td th:text="${animal.idNumber}">90</td>
+        <td th:text="${animal.description}">Gópi pies</td>
+        <td th:text="${animal.species}">Pies</td>
+        <td>
+            <form th:action="@{/deleteanimal}" method="post">
+                <button name="idNumber" th:value="${animal.idNumber}">usuń zwierzaka</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<form th:action="@{/addanimalform}" method="get">
+    <input type="submit" value="dodaj zwierzaka"/>
+</form>
+
+</body>
+</html>
